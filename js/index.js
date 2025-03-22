@@ -10,19 +10,19 @@ const categorias =
 };
 
 //Función para dibujar el ahorcado segun los intentos fallidos
-function dibujarAhorcado(intentos) 
-{
-    const dibujos = [
-      `\n  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========`,
-      `\n  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n=========`,
-      `\n  +---+\n  |   |\n  O   |\n  |   |\n      |\n      |\n=========`,
-      `\n  +---+\n  |   |\n  O   |\n /|   |\n      |\n      |\n=========`,
-      `\n  +---+\n  |   |\n  O   |\n /|\  |\n      |\n      |\n=========`,
-      `\n  +---+\n  |   |\n  O   |\n /|\  |\n /    |\n      |\n=========`,
-      `\n  +---+\n  |   |\n  O   |\n /|\  |\n / \  |\n      |\n=========`,
-    ];    
+ function dibujarAhorcado(intentos) 
+ {
+     const dibujos = [
+       `\n  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========`,
+       `\n  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n=========`,
+       `\n  +---+\n  |   |\n  O   |\n  |   |\n      |\n      |\n=========`,
+       `\n  +---+\n  |   |\n  O   |\n /|   |\n      |\n      |\n=========`,
+       `\n  +---+\n  |   |\n  O   |\n /|${String.fromCharCode(92)}  |\n     |\n     |\n=========`,
+       `\n  +---+\n  |   |\n  O   |\n /|${String.fromCharCode(92)}  |\n /    |\n      |\n=========`,
+       `\n  +---+\n  |   |\n  O   |\n /|${String.fromCharCode(92)}  |\n /  ${String.fromCharCode(92)} |\n     |\n=========`,
+     ];    
 
-    alert(dibujos[6 - intentos]);
+     alert(dibujos[6 - intentos]);
 }
 
 //Funcion para seleccionar una categoria
