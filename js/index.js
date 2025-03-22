@@ -45,7 +45,7 @@ function jugarAhorcado(palabras,categoria)
     let palabra = palabras[Math.floor(Math.random()*palabras.length)] //Se escoge de manera aleatoria la palabra de la categoria seleccionada
     let oculto = Array(palabra.length).fill("_"); //Creo un array con guiones bajo que representa la palabra oculta
     let intentos = 6;
-    let letrasUsadas = [];
+    let letrasUsadas = []; //Lista para almacenar letras usadas
 
     dibujarAhorcado(intentos);
 
@@ -57,35 +57,35 @@ function jugarAhorcado(palabras,categoria)
 
         let letra = prompt("Ingrese una letra: ").toUpperCase();
 
-        if(!letra || letra.length !== 1 || !/[A-Z]/.test(letra))
+        if(!letra || letra.length !== 1 || !/[A-Z]/.test(letra)) //valida que se haya ingresado una sola letra y que sea tipo char 
         {
-            alert("Por favor, ingresa una sola letra valida.");
+            alert("Por favor, ingresa una sola letra valida."); 
             continue;
         }
 
-        if(letrasUsadas.includes(letra))
+        if(letrasUsadas.includes(letra)) //valida que no hayas ya usado esa letra
         {
             alert("Ya ingresaste esta letras, intenta con otra.");
             continue;
         }
 
-        letrasUsadas.push(letra);
+        letrasUsadas.push(letra); //Agrega a la letra a la lista de usadas
 
-        if(palabra.includes(letra))
+        if(palabra.includes(letra)) //Si la letra está en la palabra
         {
             for(let i=0; i < palabra.length; i++)
             {
                 if(palabra[i] === letra)
-                    oculto[i] = letra;
+                    oculto[i] = letra; //Reemplpaza el guión bajo en la posicion de la letra correcta
             }
         } else 
         {
-            intentos--;
-            dibujarAhorcado(intentos);
+            intentos--; //Si la letra no está en la palabra, se quita un intento
+            dibujarAhorcado(intentos); //dibuja en funcion de los intentos fallidos
         }
     }
 
-    if(!oculto.includes("_"))
+    if(!oculto.includes("_")) //El while puede terminar por dos cosas: si ganó o perdió asi que verifico cual de las dos opciones es
     {
         alert(`¡Ganaste! La palabra era: ${palabra}`);
     } else 
@@ -97,8 +97,8 @@ function jugarAhorcado(palabras,categoria)
 //Funcion para iniciar el juego 
 function iniciarJuego() 
 {
-    let categoriaSeleccionada = seleccionarCategoria();
-    jugarAhorcado(categorias[categoriaSeleccionada], categoriaSeleccionada);
+    let categoriaSeleccionada = seleccionarCategoria(); //obtiene la categoria elegida por el usuario
+    jugarAhorcado(categorias[categoriaSeleccionada], categoriaSeleccionada); //Inicia el juego con la categoria seleccionada
     if(confirm("¿Queres jugar otra vez?"))
     {
         iniciarJuego()
